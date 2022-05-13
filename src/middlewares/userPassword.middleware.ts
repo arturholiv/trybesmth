@@ -7,7 +7,7 @@ const isPassowrdValid = (req: Request, res: Response, next: NextFunction) => {
   if (typeof password !== 'string') {
     return res.status(422).json({ message: '"password" must be a string' });
   }
-  if (password.length < 7) {
+  if (password.length < 8) {
     return res.status(422).json(
       { message: '"password" length must be at least 8 characters long' },
     );
