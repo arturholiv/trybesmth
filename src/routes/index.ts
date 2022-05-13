@@ -1,7 +1,7 @@
 import productsRoute from './products.routes';
+import usersRoute from './users.routes';
 
-export default productsRoute;
-
-// export = {
-//   productsRoute,
-// };
+export {
+  productsRoute,
+  usersRoute,
+};
