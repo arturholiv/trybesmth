@@ -3,16 +3,25 @@ import productModel from '../models/prouducts.model';
 
 const getAll = async (_req: Request, res: Response, next: NextFunction) => {
   try {
-    // const result = await productModel.getAll();
-    const result = await productModel();
+    const result = await productModel.getAll();
     res.status(200).json(result);
   } catch (e) {
     return next(e);
   }
 };
 
-export default getAll;
+const create = async (req: Request, res: Response, next: NextFunction) => {
+  const { name, amount } = req.body;
 
-// export = {
-//   getAll,
-// };
+  try {
+    const result = await productModel.create(name, amount);
+    res.status(201).json(result);
+  } catch (e) {
+    return next(e);
+  }
+};
+
+export = {
+  getAll,
+  create,
+};
