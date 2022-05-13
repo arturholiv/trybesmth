@@ -1,3 +1,4 @@
+import { ResultSetHeader } from 'mysql2';
 import connection from './connection';
 import Product from '../products.interface';
 
@@ -7,8 +8,19 @@ const getAll = async (): Promise<Product[]> => {
   return result as Product[];
 };
 
-export default getAll;
+const create = async (name: string, amount: string) => {
+  const query = 'INSERT INTO Trybesmith.Products (name, amount) VALUES (?, ?)';
+  const [{ insertId }] = await connection.execute<ResultSetHeader>(query, [name, amount]);
+  return {
+    id: insertId,
+    name,
+    amount,
+  };
+};
 
-// export = {
-//   getAll,
-// };
+// export default getAll;
+
+export = {
+  getAll,
+  create,
+};
