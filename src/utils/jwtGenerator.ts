@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const secret = process.env.JWT_SECRET as Secret;
+const secret = 'segredo' as Secret;
 
 const generate = (payload: object) => {
   const options: SignOptions = {
